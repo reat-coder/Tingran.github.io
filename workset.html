@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品集 | 学术项目展示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F4C81', // 深蓝主色调
+                        secondary: '#2A70B9', // 中蓝辅助色
+                        accent: '#5B9BD5', // 浅蓝强调色
+                        light: '#DCEAFD', // 极浅蓝背景色
+                        dark: '#082947', // 最深蓝色
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif'],
+                        serif: ['Noto Serif SC', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .section-fade {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .section-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(15, 76, 129, 0.1);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800 antialiased">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 md:px-12 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-serif font-semibold text-primary">作品集</a>
+                
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#data-analysis" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">数据分析</a>
+                    <a href="#ai-projects" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">AI项目</a>
+                    <a href="#academic" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">校园经历</a>
+                    <a href="#hobbies" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">个人爱好</a>
+                </nav>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 py-4">
+            <div class="container mx-auto px-6 flex flex-col space-y-3">
+                <a href="#data-analysis" class="text-sm font-medium text-gray-600 hover:text-primary py-2 transition-colors">数据分析</a>
+                <a href="#ai-projects" class="text-sm font-medium text-gray-600 hover:text-primary py-2 transition-colors">AI项目</a>
+                <a href="#academic" class="text-sm font-medium text-gray-600 hover:text-primary py-2 transition-colors">校园经历</a>
+                <a href="#hobbies" class="text-sm font-medium text-gray-600 hover:text-primary py-2 transition-colors">个人爱好</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 个人介绍部分 -->
+    <section class="min-h-screen flex items-center pt-20 pb-16 bg-light">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-serif font-light text-primary leading-tight mb-6">
+                        你好，我是 <span class="font-medium">你的名字</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl">
+                        一名对数据充满热情的研究者，专注于数据分析、机器学习和AI应用。此作品集展示了我的学术项目和个人研究成果。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-white p-4 rounded shadow-sm text-center">
+                            <p class="text-2xl font-semibold text-primary mb-1">5+</p>
+                            <p class="text-xs text-gray-500">数据项目</p>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm text-center">
+                            <p class="text-2xl font-semibold text-primary mb-1">3+</p>
+                            <p class="text-xs text-gray-500">AI模型</p>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm text-center">
+                            <p class="text-2xl font-semibold text-primary mb-1">2</p>
+                            <p class="text-xs text-gray-500">研究论文</p>
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm text-center">
+                            <p class="text-2xl font-semibold text-primary mb-1">1</p>
+                            <p class="text-xs text-gray-500">学位论文</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#data-analysis" class="inline-flex items-center px-6 py-3 bg-primary text-white text-sm font-medium rounded hover:bg-dark transition-colors">
+                            查看我的作品 <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="inline-flex items-center px-6 py-3 border border-primary text-primary text-sm font-medium rounded hover:bg-light transition-colors">
+                            下载简历 <i class="fa-solid fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute inset-0 bg-primary/10 rounded-full transform rotate-6"></div>
+                        <div class="absolute inset-0 bg-white rounded-full overflow-hidden shadow-md transform -rotate-3">
+                            <img src="https://picsum.photos/id/1005/400/400" alt="个人照片" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据分析部分 -->
+    <section id="data-analysis" class="py-20 section-fade">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="mb-16 text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-light text-primary mb-4">数据分析项目</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">运用统计方法和可视化技术，探索复杂数据集中的模式并提取有价值的见解。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 项目1 -->
+                <div class="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/180/600/400" alt="市场分析" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 bg-light text-primary text-xs font-medium rounded-full mb-4">市场研究</span>
+                        <h3 class="text-xl font-serif font-medium mb-2">消费者行为分析</h3>
+                        <p class="text-gray-600 text-sm mb-4">分析了10,000+客户的购买模式，识别关键市场细分和趋势。</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Pandas</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Matplotlib</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Seaborn</span>
+                        </div>
+                        <a href="#" class="text-primary text-sm font-medium hover:text-dark transition-colors inline-flex items-center">
+                            查看项目 <i class="fa-solid fa-angle-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/239/600/400" alt="金融分析" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 bg-light text-primary text-xs font-medium rounded-full mb-4">金融</span>
+                        <h3 class="text-xl font-serif font-medium mb-2">股票市场趋势分析</h3>
+                        <p class="text-gray-600 text-sm mb-4">使用ARIMA模型和波动率预测对股票表现进行时间序列分析。</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">R</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">时间序列</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">ARIMA</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Shiny</span>
+                        </div>
+                        <a href="#" class="text-primary text-sm font-medium hover:text-dark transition-colors inline-flex items-center">
+                            查看项目 <i class="fa-solid fa-angle-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/160/600/400" alt="医疗数据分析" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 bg-light text-primary text-xs font-medium rounded-full mb-4">医疗健康</span>
+                        <h3 class="text-xl font-serif font-medium mb-2">患者预后分析</h3>
+                        <p class="text-gray-600 text-sm mb-4">分析电子健康记录，识别影响患者康复率的关键因素。</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">SQL</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Tableau</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">统计测试</span>
+                        </div>
+                        <a href="#" class="text-primary text-sm font-medium hover:text-dark transition-colors inline-flex items-center">
+                            查看项目 <i class="fa-solid fa-angle-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI 项目部分 -->
+    <section id="ai-projects" class="py-20 bg-light section-fade">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="mb-16 text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-light text-primary mb-4">AI与机器学习项目</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">通过涉及大语言模型、计算机视觉和预测建模的各种项目探索人工智能的能力。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- 项目1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="md:col-span-1 bg-primary/5 p-6 flex flex-col justify-center items-center">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-comment text-2xl text-primary"></i>
+                            </div>
+                            <span class="text-xs font-medium text-primary uppercase tracking-wider">大语言模型</span>
+                        </div>
+                        <div class="md:col-span-2 p-6">
+                            <h3 class="text-xl font-serif font-medium mb-3">特定领域聊天机器人</h3>
+                            <p class="text-gray-600 text-sm mb-4">针对医疗领域的技术支持任务微调了大型语言模型，将响应准确率提高了35%。</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Hugging Face</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">PyTorch</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">微调</span>
+                            </div>
+                            <a href="#" class="text-primary text-sm font-medium hover:text-dark transition-colors inline-flex items-center">
+                                查看项目详情 <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="md:col-span-1 bg-primary/5 p-6 flex flex-col justify-center items-center">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-image text-2xl text-primary"></i>
+                            </div>
+                            <span class="text-xs font-medium text-primary uppercase tracking-wider">图像生成</span>
+                        </div>
+                        <div class="md:col-span-2 p-6">
+                            <h3 class="text-xl font-serif font-medium mb-3">风格迁移应用</h3>
+                            <p class="text-gray-600 text-sm mb-4">基于Stable Diffusion开发了一个艺术风格迁移工具，能够将照片转换为多种艺术风格。</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Stable Diffusion</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Python</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">扩散模型</span>
+                            </div>
+                            <a href="#" class="text-primary text-sm font-medium hover:text-dark transition-colors inline-flex items-center">
+                                查看项目详情 <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="md:col-span-1 bg-primary/5 p-6 flex flex-col justify-center items-center">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-brain text-2xl text-primary"></i>
+                            </div>
+                            <span class="text-xs font-medium text-primary uppercase tracking-wider">预测建模</span>
+                        </div>
+                        <div class="md:col-span-2 p-6">
+                            <h3 class="text-xl font-serif font-medium mb-3">客户流失预测系统</h3>
+                            <p class="text-gray-600 text-sm mb-4">使用Scikit-learn构建了一个客户流失预测模型，准确率达到87%，帮助企业提前识别风险客户。</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Scikit-learn</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">特征工程</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">模型优化</span>
+                            </div>
+                            <a href="#" class="text-primary text-sm font-medium hover:text-dark transition-colors inline-flex items-center">
+                                查看项目详情 <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="md:col-span-1 bg-primary/5 p-6 flex flex-col justify-center items-center">
+                            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-code text-2xl text-primary"></i>
+                            </div>
+                            <span class="text-xs font-medium text-primary uppercase tracking-wider">NLP应用</span>
+                        </div>
+                        <div class="md:col-span-2 p-6">
+                            <h3 class="text-xl font-serif font-medium mb-3">文本情感分析工具</h3>
+                            <p class="text-gray-600 text-sm mb-4">开发了一个能够分析社交媒体评论情感倾向的工具，支持多语言分析和实时可视化。</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">NLTK</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Scikit-learn</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Flask</span>
+                            </div>
+                            <a href="#" class="text-primary text-sm font-medium hover:text-dark transition-colors inline-flex items-center">
+                                查看项目详情 <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 校园经历部分 -->
+    <section id="academic" class="py-20 section-fade">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="mb-16 text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-light text-primary mb-4">校园经历</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">学术历程、研究经历和校园活动，塑造了我的专业能力和团队协作精神。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                        <h3 class="text-xl font-serif font-medium mb-6 pb-4 border-b border-gray-100">教育背景</h3>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                        <i class="fa-solid fa-graduation-cap text-primary"></i>
+                                    </div>
+                                    <h4 class="font-medium">硕士学位</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-1">数据科学与人工智能</p>
+                                <p class="text-gray-500 text-xs">某大学 | 2021-2023</p>
+                            </div>
+                            
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                        <i class="fa-solid fa-graduation-cap text-primary"></i>
+                                    </div>
+                                    <h4 class="font-medium">学士学位</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-1">统计学</p>
+                                <p class="text-gray-500 text-xs">某大学 | 2017-2021</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-serif font-medium mb-6 mt-12 pb-4 border-b border-gray-100">技能证书</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-light p-4 rounded">
+                                <p class="font-medium text-sm mb-1">Python数据科学专业证书</p>
+                                <p class="text-gray-600 text-xs">某机构 | 2022</p>
+                            </div>
+                            
+                            <div class="bg-light p-4 rounded">
+                                <p class="font-medium text-sm mb-1">机器学习工程师认证</p>
+                                <p class="text-gray-600 text-xs">某机构 | 2022</p>
+                            </div>
+                            
+                            <div class="bg-light p-4 rounded">
+                                <p class="font-medium text-sm mb-1">数据分析专业技能认证</p>
+                                <p class="text-gray-600 text-xs">某机构 | 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-2">
+                    <h3 class="text-xl font-serif font-medium mb-6 pb-4 border-b border-gray-100">研究经历</h3>
+                    
+                    <div class="space-y-12">
+                        <div class="flex">
+                            <div class="mr-6">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-flask text-primary"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="inline-block px-3 py-1 bg-light text-primary text-xs font-medium rounded-full mb-3">2022-2023</span>
+                                <h4 class="text-lg font-medium mb-2">基于大语言模型的医疗问答系统研究</h4>
+                                <p class="text-gray-600 text-sm mb-4">参与了一个旨在提高医疗信息获取效率的研究项目，负责模型微调与评估部分，研究成果发表于某学术会议。</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <span class="mr-4"><i class="fa-solid fa-user mr-1"></i> 主要研究者</span>
+                                    <span><i class="fa-solid fa-building mr-1"></i> 某大学AI实验室</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="mr-6">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-flask text-primary"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="inline-block px-3 py-1 bg-light text-primary text-xs font-medium rounded-full mb-3">2021-2022</span>
+                                <h4 class="text-lg font-medium mb-2">社交媒体情感分析与舆情预测</h4>
+                                <p class="text-gray-600 text-sm mb-4">开发了一种基于深度学习的情感分析模型，能够实时监测和预测社交媒体上的公众情绪变化。</p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <span class="mr-4"><i class="fa-solid fa-user mr-1"></i> 核心成员</span>
+                                    <span><i class="fa-solid fa-building mr-1"></i> 某大学数据科学实验室</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-serif font-medium mb-6 mt-16 pb-4 border-b border-gray-100">校园活动</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fa-solid fa-people-group text-primary"></i>
+                                </div>
+                                <h4 class="font-medium">数据科学协会主席</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">组织了20+数据分析工作坊和讲座，会员规模从30人扩大到150人。</p>
+                            <p class="text-gray-500 text-xs">2022-2023</p>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fa-solid fa-trophy text-primary"></i>
+                                </div>
+                                <h4 class="font-medium">全国大学生数学建模竞赛</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">作为团队队长，带领团队获得全国二等奖，解决了城市交通流量优化问题。</p>
+                            <p class="text-gray-500 text-xs">2022</p>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fa-solid fa-chalkboard-user text-primary"></i>
+                                </div>
+                                <h4 class="font-medium">Python编程课程助教</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">协助教授本科《Python数据分析》课程，负责答疑和作业批改，学生满意度95%。</p>
+                            <p class="text-gray-500 text-xs">2021-2022</p>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fa-solid fa-globe text-primary"></i>
+                                </div>
+                                <h4 class="font-medium">国际交流项目</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">参与了与美国某大学的联合研究项目，专注于跨文化数据分析和比较研究。</p>
+                            <p class="text-gray-500 text-xs">2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 个人爱好部分 -->
+    <section id="hobbies" class="py-20 bg-light section-fade">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="mb-16 text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-light text-primary mb-4">个人爱好</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">除了学术研究，我还有许多兴趣爱好，这些活动丰富了我的生活，也培养了我的创造力和思维能力。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1059/600/400" alt="摄影" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-medium mb-2">摄影</h3>
+                        <p class="text-gray-600 text-sm">喜欢通过镜头捕捉生活中的美好瞬间，尤其擅长风景和街头摄影。摄影培养了我的观察力和构图能力。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1060/600/400" alt="阅读" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-medium mb-2">阅读</h3>
+                        <p class="text-gray-600 text-sm">广泛阅读各类书籍，从科幻小说到哲学著作，特别关注科技发展与社会影响方面的内容。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1058/600/400" alt="跑步" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-medium mb-2">跑步</h3>
+                        <p class="text-gray-600 text-sm">坚持长跑已经3年，完成过3次半程马拉松。跑步不仅锻炼了我的体能，也帮助我理清思路。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1057/600/400" alt="编程" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-medium mb-2">开源项目</h3>
+                        <p class="text-gray-600 text-sm">在业余时间参与开源项目开发，主要贡献数据分析和机器学习相关的工具和库。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white rounded-lg overflow-hidden shadow-sm">
+                <div class="p-8">
+                    <h3 class="text-xl font-serif font-medium mb-6 text-center">个人信条</h3>
+                    <p class="text-gray-600 text-center max-w-3xl mx-auto italic">
+                        "数据是客观的，但解读数据的方式是主观的。作为数据科学家，我们的责任不仅是分析数据，更是以负责任的态度使用数据，为社会创造价值。"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section class="py-20 section-fade">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-light text-primary mb-4">联系我</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">如果您对我的项目感兴趣，或者有任何合作机会，欢迎随时联系我。</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-light rounded-lg p-8">
+                        <h3 class="text-lg font-medium mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa-solid fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">邮箱</h4>
+                                    <p class="text-gray-600 text-sm">your.email@example.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa-solid fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">电话</h4>
+                                    <p class="text-gray-600 text-sm">+86 123 4567 8910</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa-solid fa-map-marker text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">地址</h4>
+                                    <p class="text-gray-600 text-sm">北京市海淀区某大学</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="font-medium mb-4">社交媒体</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fa-brands fa-codepen"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-100 rounded-lg p-8 shadow-sm">
+                        <h3 class="text-lg font-medium mb-6">发送消息</h3>
+                        
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-sm" placeholder="您的姓名">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-sm" placeholder="您的邮箱">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">消息</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-sm" placeholder="请输入您的消息"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white text-sm font-medium py-3 rounded hover:bg-dark transition-colors">
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="#" class="text-xl font-serif font-semibold mb-4 md:mb-0">作品集</a>
+                
+                <nav class="flex space-x-8">
+                    <a href="#data-analysis" class="text-sm text-white/80 hover:text-white transition-colors">数据分析</a>
+                    <a href="#ai-projects" class="text-sm text-white/80 hover:text-white transition-colors">AI项目</a>
+                    <a href="#academic" class="text-sm text-white/80 hover:text-white transition-colors">校园经历</a>
+                    <a href="#hobbies" class="text-sm text-white/80 hover:text-white transition-colors">个人爱好</a>
+                </nav>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-white/60 mb-4 md:mb-0">© 2023 你的名字. 保留所有权利。</p>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="#" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-white/60 hover:text-white transition-colors">
+                        <i class="fa-brands fa-codepen"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'shadow');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('py-2', 'shadow');
+                navbar.classList.add('py-4');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动菜单（如果打开）
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // 滚动显示动画
+        const observeSections = () => {
+            const sections = document.querySelectorAll('.section-fade');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        };
+        
+        // 页面加载完成后初始化
+        window.addEventListener('load', () => {
+            observeSections();
+            
+            // 初始显示第一个部分
+            setTimeout(() => {
+                document.querySelector('.section-fade').classList.add('section-visible');
+            }, 300);
+        });
+    </script>
+</body>
+</html>
